@@ -5,4 +5,4 @@ Has flexible and easy to integrate framework for both react and angular.
 
 ## Demo
 http://beautifulwebart.online/angualr/index.html
-quadtree.tj-coding.info
+http://quadtree.tj-coding.info

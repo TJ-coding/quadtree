@@ -1,0 +1,30 @@
+<div class="m-card form-card">
+    <div class="m-form-card-title">
+      Add an image
+    </div>
+    <hr class="hr-red">
+    <form id="formNewImage" name="formNewImage" [formGroup]="addImage" (ngSubmit)="addImg()">
+      <div class="row pt-2">
+        <div class="wrap-input-text validate-input mt-4">
+          <input class="input-text" id="submit-name" type="text" name="name" formControlName="name" required
+            (blur)="checkValue()">
+          <span class="focus-input-text" data-placeholder="Enter Name"></span>
+        </div>
+        <div *ngIf="addImage.controls['name'].dirty && addImage.controls['name'].touched && addImage.controls['name'].invalid" class="help is-danger">
+                Enter valid name to add image
+        </div>
+        <div class="wrap-input-text validate-input mt-4">
+          <input class="input-text" type="text" name="image" formControlName="image" id="image" required
+            (blur)="checkValue()">
+          <span class="focus-input-text" data-placeholder="Enter Image URL"></span>
+        </div>
+        <div *ngIf="addImage.controls['image'].dirty && addImage.controls['image'].touched && addImage.controls['image'].invalid" class="help is-danger">
+                Enter valid image url
+              </div>
+        <div class="col-12 text-center">
+          <button type="submit" class="button btn-rounded p-2 px-4 submit-btn"
+            [disabled]="!addImage.valid">SEND</button>
+        </div>
+      </div>
+    </form>
+  </div>

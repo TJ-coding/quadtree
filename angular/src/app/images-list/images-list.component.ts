@@ -1,5 +1,6 @@
 import { Component, OnInit, AfterViewInit, AfterContentChecked } from '@angular/core';
 import { ProcessImagesService } from '../shared/process-images.service';
+import { environment } from '../../environments/environment'
 
 @Component({
   selector: 'app-images-list',
@@ -10,10 +11,18 @@ export class ImagesListComponent implements OnInit {
 
   listOfImages = [
     'portrait',
-    'lagoon',
-    'ocean',
-    'p2'];
-  appUrl = 'http://35.238.117.10';
+    'p2',
+    'p3',
+    'artwall',
+    'boris',
+    'pixels',
+    'quadfile',
+    'rgb',
+    'bush',
+    'earth',
+    'landscape1',
+];
+  appUrl = environment.apiUrl;
 
   constructor(private imageService: ProcessImagesService) { }
 
@@ -37,7 +46,7 @@ export class ImagesListComponent implements OnInit {
           setTimeout(() => {
             document.getElementById(source).setAttribute('src', this.appUrl + '/test/' + source + '/' + source + (i + 1) + '.png');
             resolve();
-          }, Math.random() * 1000)
+          }, Math.random() * 500)
         ));
       }
     }

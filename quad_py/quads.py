@@ -165,8 +165,6 @@ def main(filename):
     print('             %8d %8.2f%%' % (len(model.quads), 100))
     print('Saving ', filename)
     Image.open(filename).save(name + '/%s%d.png' % (name, frame_no))
-    os.remove(filename)
-    Image.open("%s/%s1.png" % (name, name)).save(filename)
 
 
 if __name__ == '__main__':

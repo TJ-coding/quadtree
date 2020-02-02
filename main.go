@@ -1,7 +1,7 @@
 package main
 
 import (
-	"encoding/json"
+
 	"fmt"
 	"io/ioutil"
 	"net/http"
@@ -27,15 +27,18 @@ func getFilesFromDir(dirPath string) []string {
 func main() {
 	//recieve get request
 	http.HandleFunc("/get_image", func(w http.ResponseWriter, r *http.Request) {
+		 w.Header().Set("Access-Control-Allow-Origin", "*")
+		 w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
 		if r.Method == "GET" {
-			fileName := r.URL.Query().Get("ImgIme")
+			fileName := r.URL.Query().Get("ImgName")
 			if fileName != "" {
 				fileList := getFilesFromDir("./static/" + fileName)
-				fmt.Fprint(w, "{\"url\":\"http://35.188.44.123/get_image?Img_id=2/"+fileName+"\", \"num_of_files\":"+strconv.Itoa(len(fileList))+"}")
+				fmt.Fprint(w, "{ \"num_of_files\":"+strconv.Itoa(len(fileList))+"}")
 
 			} else {
 				fmt.Fprintf(w, "Get parameter could not be read")
 			}
+
 		}
 	})
 
